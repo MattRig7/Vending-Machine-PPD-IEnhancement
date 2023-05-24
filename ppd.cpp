@@ -106,7 +106,12 @@ int main(int argc, char **argv)
         std::cout<<"ID   |Name \t\t\t\t |Available |Price\n";
         std::cout<<"------------------------------------------------------------\n";
         
-        stockList.displayItems();
+        if (choice == 1){
+            stockList.displayItems();
+        }
+        else if (choice == 2){
+            stockList.displayItemsDLL();
+        }
         std::cout<<"\n";
         
         display.show_menu();
@@ -135,29 +140,56 @@ int main(int argc, char **argv)
 
 
             std::string new_id = "";
-            Node* current = stockList.getHead();
-            while (current != NULL)
-            {
-                Stock* stock = current->data;
-                new_id = stock->id;
-                new_id = new_id.substr(1);
-                int id = std::stoi(new_id) + 1;
-                std::string str = std::to_string(id);
-                if (str.length() == 1)
-                {
-                    new_id = "I000" + str;
-                }else if (str.length() == 2)
-                {
-                    new_id = "I00" + str;
-                }else if (str.length() == 3)
-                {
-                    new_id = "I0" + str;
-                }else if (str.length() == 4)
-                {
-                    new_id = "I" + str;
-                }
-                current = current->next;
+
+            if (choice == 1){
+                Node* current = stockList.getHead();
+                while (current != NULL){
+                    Stock* stock = current->data;
+                    new_id = stock->id;
+                    new_id = new_id.substr(1);
+                    int id = std::stoi(new_id) + 1;
+                    std::string str = std::to_string(id);
+                    if (str.length() == 1)
+                    {
+                        new_id = "I000" + str;
+                    }else if (str.length() == 2)
+                    {
+                        new_id = "I00" + str;
+                    }else if (str.length() == 3)
+                    {
+                        new_id = "I0" + str;
+                    }else if (str.length() == 4)
+                    {
+                        new_id = "I" + str;
+                    }
+                    current = current->next;
             }
+            }
+            else if (choice == 2){
+                NodeDLL* current = stockList.getHeadDLL();
+                while (current != NULL){
+                    StockDLL* stock = current->data;
+                    new_id = stock->id;
+                    new_id = new_id.substr(1);
+                    int id = std::stoi(new_id) + 1;
+                    std::string str = std::to_string(id);
+                    if (str.length() == 1)
+                    {
+                        new_id = "I000" + str;
+                    }else if (str.length() == 2)
+                    {
+                        new_id = "I00" + str;
+                    }else if (str.length() == 3)
+                    {
+                        new_id = "I0" + str;
+                    }else if (str.length() == 4)
+                    {
+                        new_id = "I" + str;
+                    }
+                    current = current->next;
+            }
+            }
+            
             std::string name, desc;
             double price = 0.0;
             int onHand = 10;
@@ -189,8 +221,13 @@ int main(int argc, char **argv)
             int dollars = static_cast<int>(price);
             int cents = static_cast<int>((price - dollars) * 100 + 0.5); // Add 0.5 for rounding
 
+            if (choice == 1){
             // Add the item to the linked list using the addStock function and user-input parameters
-            stockList.addStock(new_id, name, desc, dollars, cents, onHand);
+                stockList.addStock(new_id, name, desc, dollars, cents, onHand);
+            }
+            else if (choice == 2){
+                stockList.addStockDLL(new_id, name, desc, dollars, cents, onHand);
+            }
 
             std::cout<<"\n"; 
             std::cout << "This item: \""<< name << " - " << desc << "\" has now been added to the menu.\n";

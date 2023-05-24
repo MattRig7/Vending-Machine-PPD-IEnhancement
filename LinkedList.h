@@ -1,16 +1,22 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include "Node.h"
+#include "NodeDLL.h"
 #include "Coin.h"
 #include <map>
 
 class LinkedList
 {
 public:
+    NodeDLL* getHeadDLL();
     LinkedList();
     ~LinkedList();
+
     void loadStockData(const char* filename);
+    void loadStockDataDLL(const char* filename);
+
     void loadCoinsData(const char* filename);
+    void loadCoinsDataDLL(const char* filename);
 
     void addStock(const std::string& id, 
                   const std::string& name, 
@@ -18,7 +24,14 @@ public:
                   const int dollars, 
                   const int cents, 
                   int onHand);
+    void addStockDLL(const std::string& id, 
+                  const std::string& name, 
+                  const std::string& desc, 
+                  const int dollars, 
+                  const int cents, 
+                  int onHand);
     void displayItems();
+    void displayItemsDLL();
 
 
 
@@ -46,6 +59,7 @@ public:
     }
 
     Node* getHead();
+    
 
     void displayCoins(LinkedList& coinList);
 
@@ -53,6 +67,7 @@ public:
 private:
     // the beginning of the list
     Node* head;
+    NodeDLL* headDLL;
   
     // how many nodes are there in the list?
     unsigned count;

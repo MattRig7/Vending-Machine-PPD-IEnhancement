@@ -58,9 +58,34 @@ int main(int argc, char **argv)
     const char* StockFile = argv[1];
     const char* CoinsFile = argv[2];
 
+    int choice = 0;
+    bool selection = false;
 
-    stockList.loadStockData(StockFile);
-    coinList.loadCoinsData(CoinsFile);  
+    while (selection == false){
+    
+    std::cout << "Please choose which version of the code to run:" << std::endl;
+    std::cout << "1. Group Implementation" << std::endl;
+    std::cout << "2. Individual Implementation" << std::endl;
+    std::cout << "Enter: " << std::endl;
+    std::cin >> choice;
+
+    
+    if (choice == 1){
+        stockList.loadStockData(StockFile);
+        coinList.loadCoinsData(CoinsFile); 
+        selection = true;
+    }
+    else if (choice == 2){
+        stockList.loadStockDataDLL(StockFile);
+        coinList.loadCoinsDataDLL(CoinsFile);
+        selection = true;
+    }     
+    else{
+        std::cout << "Invalid choice" << std::endl;
+    }    
+            
+    }
+    
 
     Purchase purchase(stockList);
 

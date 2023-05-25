@@ -42,14 +42,14 @@ Coin Summary
 -------------
 Denomination | Count
 ---------------------------
-5 Cents      |0
-10 Cents     |0
-20 Cents     |0
-50 Cents     |0
-1 Dollar     |0
-2 Dollar     |0
-5 Dollar     |0
-10 Dollar    |0
+5 Cents      |20
+10 Cents     |40
+20 Cents     |3
+50 Cents     |5
+1 Dollar     |30
+2 Dollar     |20
+5 Dollar     |4
+10 Dollar    |3
 
 Main Menu:
 	1.Display Items

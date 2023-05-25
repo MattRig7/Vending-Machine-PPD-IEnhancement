@@ -1,3 +1,7 @@
+Please choose which version of the code to run:
+1. Group Implementation
+2. Individual Implementation
+Enter: 
 Main Menu:
 	1.Display Items
 	2.Purchase Items
@@ -9,7 +13,7 @@ Administrator-Only Menu:
 	7.Reset Stock
 	8.Reset Coins
 	9.Abort Program
-	Select your option (1-9):
+	Select your option (1-9): 
 
 Items Menu
 ----------
@@ -32,8 +36,8 @@ Administrator-Only Menu:
 	7.Reset Stock
 	8.Reset Coins
 	9.Abort Program
-	Select your option (1-9):
-	
+	Select your option (1-9): 
+
 Coin Summary
 -------------
 Denomination | Count
@@ -58,4 +62,4 @@ Administrator-Only Menu:
 	7.Reset Stock
 	8.Reset Coins
 	9.Abort Program
-	Select your option (1-9):
+	Select your option (1-9): 

@@ -62,6 +62,7 @@ public:
     
 
     void displayCoins(LinkedList& coinList);
+    void displayCoinsDLL(LinkedList& coinList);
 
 
 private:

@@ -132,18 +132,18 @@ void LinkedList::loadStockDataDLL(const char* filename) {
 
         count++;
 
-
-        NodeDLL* current = headDLL;
-        while (current != NULL) {
-        StockDLL* stock = current->data;
-        std::cout << "ID: " << stock->id << std::endl;
-        std::cout << "Name: " << stock->name << std::endl;
-        std::cout << "Description: " << stock->description << std::endl;
-        std::cout << "Price: $" << stock->price.dollars << "." << stock->price.cents << std::endl;
-        std::cout << "On Hand: " << stock->on_hand << std::endl;
-        std::cout << std::endl;
-        current = current->next;
-         }
+        // for test print
+        // NodeDLL* current = headDLL;
+        // while (current != NULL) {
+        // StockDLL* stock = current->data;
+        // std::cout << "ID: " << stock->id << std::endl;
+        // std::cout << "Name: " << stock->name << std::endl;
+        // std::cout << "Description: " << stock->description << std::endl;
+        // std::cout << "Price: $" << stock->price.dollars << "." << stock->price.cents << std::endl;
+        // std::cout << "On Hand: " << stock->on_hand << std::endl;
+        // std::cout << std::endl;
+        // current = current->next;
+        //  }
     }
 
 }

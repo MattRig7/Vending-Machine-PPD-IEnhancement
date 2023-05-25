@@ -6,6 +6,7 @@
 #include "Purchase.h"
 #include "Display.h"
 #include "Coin.h"
+using std::string;
 
 // Checks if price input is valid in that it matches the required format
 bool is_valid_price(const std::string &price_str) {
@@ -58,7 +59,7 @@ int main(int argc, char **argv)
     const char* StockFile = argv[1];
     const char* CoinsFile = argv[2];
 
-    int choice = 0;
+    string choice = "0";
     bool selection = false;
 
     while (selection == false){
@@ -70,18 +71,18 @@ int main(int argc, char **argv)
     std::cin >> choice;
 
     
-    if (choice == 1){
+    if (choice == "1"){
         stockList.loadStockData(StockFile);
         coinList.loadCoinsData(CoinsFile); 
         selection = true;
     }
-    else if (choice == 2){
+    else if (choice == "2"){
         stockList.loadStockDataDLL(StockFile);
         coinList.loadCoinsDataDLL(CoinsFile);
         selection = true;
     }     
     else{
-        std::cout << "Invalid choice" << std::endl;
+        std::cout << "Invalid choice. Only an integer 1 or 2 can be entered. "<< std::endl;
     }    
             
     }
@@ -94,10 +95,11 @@ int main(int argc, char **argv)
 
     display.show_menu();
 
-    int num = 0;
-    while(std::cin>>num)
+    string userInput = "";
+    //int num = 0;
+    while(std::cin>>userInput)
     {
-        if(num == 1)
+        if(userInput == "1")
         {
         std::cout<<"\n";    
         std::cout<<"\n"; 
@@ -106,10 +108,10 @@ int main(int argc, char **argv)
         std::cout<<"ID   |Name \t\t\t\t |Available |Price\n";
         std::cout<<"------------------------------------------------------------\n";
         
-        if (choice == 1){
+        if (choice == "1"){
             stockList.displayItems();
         }
-        else if (choice == 2){
+        else if (choice == "2"){
             stockList.displayItemsDLL();
         }
         std::cout<<"\n";
@@ -118,12 +120,12 @@ int main(int argc, char **argv)
 
 
         }
-        else if(num == 2)
+        else if(userInput == "2")
         {
             purchase.purchase_room();
         }
 
-        else if(num == 3)
+        else if(userInput == "3")
         {
             stockList.saveStockData(StockFile);
             coinList.saveCoinsData(CoinsFile);
@@ -131,7 +133,7 @@ int main(int argc, char **argv)
             coinList.freeMemory();
             exit(0);
         }
-        else if(num == 4)
+        else if(userInput == "4")
         {
             // Enter paramters which the new item will be based off
             std::cout<<"\n";  
@@ -141,7 +143,7 @@ int main(int argc, char **argv)
 
             std::string new_id = "";
 
-            if (choice == 1){
+            if (choice == "1"){
                 Node* current = stockList.getHead();
                 while (current != NULL){
                     Stock* stock = current->data;
@@ -165,7 +167,7 @@ int main(int argc, char **argv)
                     current = current->next;
             }
             }
-            else if (choice == 2){
+            else if (choice == "2"){
                 NodeDLL* current = stockList.getHeadDLL();
                 while (current != NULL){
                     StockDLL* stock = current->data;
@@ -221,11 +223,11 @@ int main(int argc, char **argv)
             int dollars = static_cast<int>(price);
             int cents = static_cast<int>((price - dollars) * 100 + 0.5); // Add 0.5 for rounding
 
-            if (choice == 1){
+            if (choice == "1"){
             // Add the item to the linked list using the addStock function and user-input parameters
                 stockList.addStock(new_id, name, desc, dollars, cents, onHand);
             }
-            else if (choice == 2){
+            else if (choice == "2"){
                 stockList.addStockDLL(new_id, name, desc, dollars, cents, onHand);
             }
 
@@ -237,7 +239,7 @@ int main(int argc, char **argv)
 
 
         }
-        else if(num == 5)
+        else if(userInput == "5")
         {
             std::cout<<"\n"; 
             std::cout<<"\n"; 
@@ -255,7 +257,7 @@ int main(int argc, char **argv)
           
 
      
-        else if(num == 6)
+        else if(userInput == "6")
         {
             std::cout<<"\n";  
             std::cout<<"\n";  
@@ -264,7 +266,7 @@ int main(int argc, char **argv)
             display.show_menu();
 
         }
-        else if(num == 7)
+        else if(userInput == "7")
 
         {   
             
@@ -284,7 +286,7 @@ int main(int argc, char **argv)
         }
             
         }
-        else if(num == 8)
+        else if(userInput == "8")
         {
 
             //coin->ResetCoins(coin);
@@ -303,13 +305,13 @@ int main(int argc, char **argv)
             display.show_menu();
 
         }
-        else if(num == 9)
+        else if(userInput == "9")
         {
             exit(0);
         }
 
         else{
-            std::cout << "Not a valid option selected. Please select from the following options:" << std::endl;
+            std::cout << "Not a valid option selected. Please enter an integer from the following options:" << std::endl;
             display.show_menu();
         }
           

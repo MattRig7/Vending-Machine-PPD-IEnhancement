@@ -261,7 +261,12 @@ int main(int argc, char **argv)
         {
             std::cout<<"\n";  
             std::cout<<"\n";  
-            coinList.displayCoins(coinList);      
+            if (choice == "1"){
+                coinList.displayCoins(coinList);      
+            }
+            else if (choice == "2"){
+                coinList.displayCoinsDLL(coinList);
+            }
             std::cout<<"\n";     
             display.show_menu();
 

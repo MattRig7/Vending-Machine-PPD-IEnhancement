@@ -15,7 +15,7 @@ NodeDLL::~NodeDLL(){
 
 };
 
-void StockDLL::ResetStock(StockDLL* stock){
+void StockDLL::ResetStockDLL(StockDLL* stock){
 
     //loops through linkedlist
     //sets all stock::on_hand values to DEFAULT_STOCK_LEVEL 20

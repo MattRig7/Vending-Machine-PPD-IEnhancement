@@ -38,8 +38,11 @@ public:
     // more functions to be added perhaps...
     void removeItem(std::string ID);
     void saveStockData(const char* filename);
+    void saveStockDataDLL(const char* filename);
     void saveCoinsData(const char* filename);
+    void saveCoinsDataDLL(const char* filename);
     void freeMemory();
+    void freeMemoryDLL();
 
     // more functions to be added perhaps...
     //Get product information node

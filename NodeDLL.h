@@ -61,7 +61,7 @@ public:
     unsigned on_hand;   
 
 
-    void ResetStock(StockDLL* stock); 
+    void ResetStockDLL(StockDLL* stock); 
 };
 
 /**

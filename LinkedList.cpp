@@ -441,6 +441,24 @@ void LinkedList::saveStockData(const char* filename){
 
 }
 
+void LinkedList::saveStockDataDLL(const char* filename){
+    std::ofstream stockFile(filename);
+    if(!stockFile){
+        std::cerr << "Error: could not open file for writing." << std::endl;
+        EXIT_FAILURE;
+    }
+
+    NodeDLL* current = headDLL;
+    while (current != NULL){
+        StockDLL* stock = current->data;
+        stockFile << stock->id << "|" << stock->name << "|" << stock->description << "|" << stock->price.dollars
+        << "." << stock->price.cents << "|" << stock->on_hand << std::endl;
+        current = current->next;
+    }
+    stockFile.close();
+
+}
+
 void LinkedList::saveCoinsData(const char* filename){
     std::ofstream coinsFile(filename);
     if(!coinsFile){
@@ -449,6 +467,49 @@ void LinkedList::saveCoinsData(const char* filename){
     }
    
     Node* current = head;
+    while (current != NULL){
+        Coin* coin = current->data1;
+        //make denom from enumerations to character types
+        string denom = "";
+        if(coin->denom == FIVE_CENTS){
+            denom = "5";
+        }else if (coin->denom == TEN_CENTS)
+        {
+            denom = "10";
+        }else if (coin->denom == TWENTY_CENTS)
+        {
+            denom = "20";
+        }else if (coin->denom == FIFTY_CENTS)
+        {
+            denom = "50";
+        }else if (coin->denom == ONE_DOLLAR)
+        {
+            denom = "100";
+        }else if (coin->denom == TWO_DOLLARS)
+        {
+            denom = "200";
+        }else if (coin->denom == FIVE_DOLLARS)
+        {
+            denom = "500";
+        }else if (coin->denom == TEN_DOLLARS)
+        {
+            denom = "1000";
+        }
+        coinsFile << denom << "," << coin->count << std::endl;
+        current = current->next;
+    }
+    coinsFile.close();
+
+}
+
+void LinkedList::saveCoinsDataDLL(const char* filename){
+    std::ofstream coinsFile(filename);
+    if(!coinsFile){
+        std::cerr << "Error: could not open file for writing." << std::endl;
+        EXIT_FAILURE;
+    }
+   
+    NodeDLL* current = headDLL;
     while (current != NULL){
         Coin* coin = current->data1;
         //make denom from enumerations to character types
@@ -499,6 +560,25 @@ void LinkedList::freeMemory(){
         
     }
     head = nullptr;
+    count = 0;
+    
+}
+
+void LinkedList::freeMemoryDLL(){
+    NodeDLL* current = headDLL;
+    while (current != nullptr){
+        NodeDLL* next = current->next;
+        if (current->data != nullptr)
+        {
+            delete current->data;
+            delete current->data1;
+            current->data = nullptr;
+        }
+        delete current;
+        current = next;
+        
+    }
+    headDLL = nullptr;
     count = 0;
     
 }

@@ -127,10 +127,19 @@ int main(int argc, char **argv)
 
         else if(userInput == "3")
         {
-            stockList.saveStockData(StockFile);
-            coinList.saveCoinsData(CoinsFile);
-            stockList.freeMemory();
-            coinList.freeMemory();
+
+            if (choice == "1"){
+                stockList.saveStockData(StockFile);
+                coinList.saveCoinsData(CoinsFile);
+                stockList.freeMemory();
+                coinList.freeMemory();
+            }
+            else if (choice == "2"){
+                stockList.saveStockDataDLL(StockFile);
+                coinList.saveCoinsDataDLL(CoinsFile);
+                stockList.freeMemoryDLL();
+                coinList.freeMemoryDLL(); 
+            }
             exit(0);
         }
         else if(userInput == "4")
@@ -275,12 +284,23 @@ int main(int argc, char **argv)
 
         {   
             
+            if (choice == "1"){
             Node* current = stockList.getHead();
             while (current != NULL) {
                 Stock* stock = current->data;
                 stock->ResetStock(stock);
                 //std::cout << stock->on_hand << std::endl;
                 current = current->next;
+            }
+            }
+            else if (choice == "2"){
+                NodeDLL* current = stockList.getHeadDLL();
+                while (current != NULL) {
+                    StockDLL* stock = current->data;
+                    stock->ResetStockDLL(stock);
+                    //std::cout << stock->on_hand << std::endl;
+                    current = current->next;
+            } 
             }
             std::cout<<"\n";  
             std::cout<<"\n";
@@ -296,13 +316,25 @@ int main(int argc, char **argv)
 
             //coin->ResetCoins(coin);
 
-            Node* current = coinList.getHead();
-            while (current != NULL) {
+            if (choice == "1"){
+                Node* current = coinList.getHead();
+                while (current != NULL) {
 
-                Coin* coin = current->data1;
-                coin->ResetCoins(coin);               
-                current = current->next;
-                
+                    Coin* coin = current->data1;
+                    coin->ResetCoins(coin);               
+                    current = current->next;
+                    
+                }
+            }    
+            else if (choice == "2"){
+                NodeDLL* current = coinList.getHeadDLL();
+                while (current != NULL) {
+
+                    Coin* coin = current->data1;
+                    coin->ResetCoins(coin);               
+                    current = current->next;
+                    
+                }
             }
             std::cout<<"\n";  
             std::cout << "“All coins has been reset to the default level of " << DEFAULT_COIN_COUNT << "”" << std::endl;
